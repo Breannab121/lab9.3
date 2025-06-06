@@ -1,0 +1,15 @@
+body, button, input, select, textarea {
+  font-family: 'Rubik', sans-serif;
+}
+
+#map {
+    height: 400px; /* You can adjust this height */
+    width: 100%;
+}
+
+
+.column-border {
+  border-right: 1px solid #ccc;
+  height: 75px;
+
+}
