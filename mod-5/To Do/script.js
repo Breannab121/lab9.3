@@ -1,4 +1,4 @@
-const productList = document.getElementById('taskList');
+const productList = document.getElementById('taskInput');
 const addProductButton = document.getElementById('addTaskButton');
 
 productList.addEventListener('click', (event) => {

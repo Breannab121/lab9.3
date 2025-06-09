@@ -1,0 +1,33 @@
+// variables
+@width: 300px;
+@height: @width + 200px;
+@bg-primary: royalblue;
+@bg-success: lime;
+
+
+// mixing
+.round {
+    border-radius: 15px;
+}
+
+.button {
+    background-color: @bg-success;
+    width: 50px;
+     padding: 5px;
+    height: 30px;
+     .round()
+  }
+
+#card {
+    width: @width;
+    height: @height;
+    margin-bottom: 20px;
+    background-color: @bg-primary;
+    padding: 10px;
+    color: white;
+    .round()   
+}
+
+ button {
+    .button
+ }

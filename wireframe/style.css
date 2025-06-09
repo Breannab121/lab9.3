@@ -1,0 +1,14 @@
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* logo on left, nav in center, button on right */
+    align-items: center; /* vertically center everything */
+    padding: 0 2rem; /* optional: add space on sides */
+}
