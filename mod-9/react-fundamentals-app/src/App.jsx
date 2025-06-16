@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg'
 
 function App() {
   return (
-    <div className="container">
+   
       
     <div>
       {/* Navbar  */}
@@ -14,11 +14,11 @@ function App() {
         <a href="#">About</a>
         <a href="#">Contact</a>
       </nav>
-      
+
     <div>
       <label htmlfor="search">Search:</label>
       <input type="text" name="search" id="search" placeholder="Search" />
-      <button onClick={handleClick}>Search</button>
+    
     </div>
 
       {/* Main Section  */}

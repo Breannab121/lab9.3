@@ -1,4 +1,4 @@
-import { Product } from './product';
+import { Product } from './product'; 
 import { fetchProductById } from './apiService';
 import { calculateDiscount } from './discountCalculator';
 import { calculateTax } from './taxCalculator';
@@ -49,13 +49,13 @@ async function main() {
   }
 
     
-    console.log(`\nAttempting to fetch product ID ${networkErrorProductId} to simulate network error...`);
+    console.log(`\nAttempting to fetch product ID ${nonExistentProductId} to simulate network error...`);
     try {
         
-        const productWithNetworkIssue = await fetchProductById(networkErrorProductId);
+        const productWithNetworkIssue = await fetchProductById(nonExistentProductId);
         console.log(`Successfully fetched product ${productWithNetworkIssue.id} (network error not simulated).`);
     } catch (error) {
-        console.error(`\nSimulated network error caught for product ID ${networkErrorProductId}:`);
+        console.error(`\nSimulated network error caught for product ID ${nonExistentProductId}:`);
         handleError(error);
     }
 
