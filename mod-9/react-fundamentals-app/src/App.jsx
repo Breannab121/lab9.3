@@ -1,50 +1,61 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-// import './App.css'
+import './App.css'
+import { AlertBox } from './components/AlertBox/AlertBox';
+import { ProductDisplay } from './components/ProductDisplay/ProductDisplay';
+import { UserProfileCard } from './components/UserProfileCard/UserProfileCard';
 
 function App() {
+  const description = 'second edition playstation';
+  const product = {name: 'Playstation'};
+  const description2 = { name: 'Samsung'};
+  const user = { name: 'John'};
+
   return (
-   
-      
     <div>
-      {/* Navbar  */}
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
+      <h1>AlertBox</h1>
+      <AlertBox 
+      type="warning" 
+      message="This is a warning alert!" 
+      children="Fix warning"/>
 
-    <div>
-      <label htmlfor="search">Search:</label>
-      <input type="text" name="search" id="search" placeholder="Search" />
-    
-    </div>
+      <AlertBox 
+      type="success" 
+      message="This is a success alert!" 
+      children="Great"/>
 
-      {/* Main Section  */}
-      <main>
-        <h1>React Fundamentals App</h1>
+      <AlertBox 
+      type="error" 
+      message="This is an error alert" 
+      children="error 123"/>
 
-        {/* Section 1  */}
-        <section>
-          <h2>Latest Products</h2>
+      <AlertBox 
+      type="info" 
+      message ="This is an info alert" 
+      children="hello, the info will be sent to your gmail"/>
 
-          <p>Checkout our new products</p>
-        </section>
+      <h1>Products</h1>
+      <ProductDisplay
+      product={product}
+      showDescription={description}
+      showStockStatus={true}/>
 
-        {/* Section 2  */}
-        <section>
-          <h2>Register for a discount</h2>
-          <a href="#">Click here</a>"
-        </section>
-      </main>
+      <h1>Product</h1>
+      <ProductDisplay
+      product={description2}
+      showDescription="Smart 4k TV"
+      showStockStatus={false} />
 
-      {/* Footer  */}
-      <footer>
-        <h3>Find us on Facebook</h3>
-      </footer>
+      <h1>Profile</h1>
+      <UserProfileCard
+      user={user}
+      showEmail={true}
+      showRole={true} /> 
+
     </div>
   );
 }
+
 
 export default App;
