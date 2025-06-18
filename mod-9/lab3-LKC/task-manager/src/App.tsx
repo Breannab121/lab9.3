@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import TaskFilter from './components/TaskFilter/TaskFilter';
+import TaskList from './components/TaskList/TaskList';
+import type { Task, TaskStatus } from './types';
+
+const initialTasks: Task[] = [
+  {
+    id: '1',
+    title: 'Design landing page',
+    description: 'Create wireframes',
+    status: 'pending',
+    priority: 'high',
+    dueDate: '2025-06-20',
+  },
+  {
+    id: '2',
+    title: 'Set up CI/CD pipeline',
+    description: 'Configure GitHub Actions',
+    status: 'in-progress',
+    priority: 'medium',
+    dueDate: '2025-06-18',
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [filters, setFilters] = useState<{
+    status?: TaskStatus;
+    priority?: 'low' | 'medium' | 'high';
+  }>({});
+
+  const filteredTasks = tasks.filter(task => {
+    const matchStatus = !filters.status || task.status === filters.status;
+    const matchPriority = !filters.priority || task.priority === filters.priority;
+    return matchStatus && matchPriority;
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ padding: '1rem' }}>
+      <h1>Task Manager</h1>
+      <TaskFilter onFilterChange={setFilters} />
+      <TaskList
+        tasks={filteredTasks}
+        onDelete={(id) =>
+          setTasks((prev) => prev.filter((task) => task.id !== id))
+        }
+        onStatusChange={(id, newStatus) =>
+          setTasks((prev) =>
+            prev.map((task) =>
+              task.id === id ? { ...task, status: newStatus } : task
+            )
+          )
+        }
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
